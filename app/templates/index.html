@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>NexaCorp - Portal Interno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp - Portal Interno de TI</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('chamados_novo') }}">Abrir chamado</a>
+            {% if cargo == 'admin' %}
+                <a href="{{ url_for('painel_admin') }}">Painel admin</a>
+            {% endif %}
+            {% if usuario %}
+                <a href="{{ url_for('logout') }}">Sair ({{ usuario }})</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Bem-vindo(a) ao portal interno</h2>
+            <p>
+                Use o portal para abrir chamados de suporte de TI, acompanhar protocolos
+                e, caso seja colaborador(a) cadastrado(a), acessar seu perfil.
+            </p>
+            <p>
+                Problemas de acesso? Use a opcao
+                <a href="{{ url_for('recuperar_senha') }}">recuperar senha</a>.
+            </p>
+        </div>
+    </main>
+    <!--
+        TODO (dev): trocar SALT_RESET fixo "nexa2026" por algo gerado por
+        ambiente antes de ir pra producao. O token de recuperacao hoje e
+        md5(user_id + SALT_RESET) - lembrar de migrar pra algo com expiracao
+        real e nao previsivel.
+    -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Confirmar redefinicao - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav><a href="{{ url_for('index') }}">Inicio</a></nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Confirmar redefinicao de senha</h2>
+            {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+            {% if resultado %}
+                <p class="sucesso">{{ resultado }}</p>
+            {% else %}
+            <form method="post" action="{{ url_for('recuperar_confirmar') }}">
+                <label for="user_id">ID do usuario</label>
+                <input type="text" id="user_id" name="user_id" value="{{ user_id }}" required>
+                <label for="token">Token</label>
+                <input type="text" id="token" name="token" value="{{ token }}" required>
+                <label for="nova_senha">Nova senha</label>
+                <input type="password" id="nova_senha" name="nova_senha" required>
+                <button type="submit">Redefinir senha</button>
+            </form>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

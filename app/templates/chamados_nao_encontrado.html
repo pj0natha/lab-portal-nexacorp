@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Chamado nao encontrado - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav><a href="{{ url_for('index') }}">Inicio</a></nav>
+    </header>
+    <main>
+        <div class="card">
+            <p class="erro">Chamado com protocolo "{{ protocolo }}" nao encontrado.</p>
+        </div>
+    </main>
+</body>
+</html>

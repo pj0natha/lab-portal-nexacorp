@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Chamado {{ chamado['protocolo'] }} - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav><a href="{{ url_for('index') }}">Inicio</a></nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Chamado #{{ chamado['protocolo'] }}</h2>
+            <p><strong>Assunto:</strong> {{ chamado['assunto'] }}</p>
+            <p><strong>Aberto em:</strong> {{ chamado['criado_em'] }}</p>
+            <div class="detalhe">
+                <strong>Descricao:</strong>
+                <p>{{ chamado['descricao']|safe }}</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

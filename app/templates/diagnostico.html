@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Diagnostico de rede - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('painel_admin') }}">Painel admin</a>
+        </nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Diagnostico de conectividade <span class="badge">admin</span></h2>
+            <p>Verifique se um host esta respondendo a partir do servidor interno.</p>
+            <form method="post" action="{{ url_for('admin_diagnostico') }}">
+                <label for="host">Host ou IP</label>
+                <input type="text" id="host" name="host" value="{{ host }}" placeholder="ex: 8.8.8.8">
+                <button type="submit">Testar conectividade</button>
+            </form>
+            {% if saida %}
+                <h3>Resultado</h3>
+                <pre>{{ saida }}</pre>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

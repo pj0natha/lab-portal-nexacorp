@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Login - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav><a href="{{ url_for('index') }}">Inicio</a></nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Login</h2>
+            {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+            {% if flag %}
+                <p class="sucesso">Login efetuado com sucesso.</p>
+                <div class="flag">{{ flag }}</div>
+                <p><a href="{{ destino }}">Continuar &rarr;</a></p>
+            {% else %}
+            <form method="post" action="{{ url_for('login') }}">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" required>
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

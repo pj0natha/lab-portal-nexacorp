@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Painel Admin - NexaCorp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>NexaCorp</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('logout') }}">Sair</a>
+        </nav>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Painel administrativo</h2>
+            <p>Bem-vindo(a), {{ nome }}.</p>
+            <p>
+                <a href="{{ url_for('admin_diagnostico') }}">Ferramenta de diagnostico de rede</a>
+                <span class="badge">admin</span>
+            </p>
+        </div>
+    </main>
+</body>
+</html>
